@@ -1,0 +1,11 @@
+# Dependencies
+node_modules
+
+# yarn error logs
+yarn-error.log
+
+# Ignore all .env* files except .env*.example
+!.env*.example
+
+# Code coverage
+coverage
