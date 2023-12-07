@@ -1,5 +1,4 @@
-const dotenv = require("dotenv");
-dotenv.config();
+require("dotenv").config();
 
 const createError = require("http-errors");
 const express = require("express");
@@ -12,6 +11,11 @@ const { initializeDatabase } = require("./models/index");
 
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
+const reviewsRouter = require("./routes/reviews");
+const productsRouter = require("./routes/products");
+const ordersRouter = require("./routes/orders");
+const imagesRouter = require("./routes/images");
+const categoriesRouter = require("./routes/categories");
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -38,7 +42,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
+app.use("/api/users", usersRouter);
+app.use("/api/reviews", reviewsRouter);
+app.use("/api/products", productsRouter);
+app.use("/api/orders", ordersRouter);
+app.use("/api/images", imagesRouter);
+app.use("/api/categories", categoriesRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

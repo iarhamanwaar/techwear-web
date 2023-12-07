@@ -4,7 +4,7 @@ const Product = require("./Product");
 const Review = require("./Review");
 const Image = require("./Image");
 const Category = require("./Category");
-const sequelize = "./index";
+const sequelize = require(".");
 
 const User = sequelize.define("User", {
   username: {
