@@ -5,6 +5,12 @@ const productController = require("../controllers/products");
 // Create a new product
 router.post("/", productController.createProduct);
 
+// Create a new product
+router.post("/image", productController.createProductWithImage);
+
+// Get products by category id
+router.get("/categories/:categoryId", productController.getProductByCategory);
+
 // Get all products
 router.get("/", productController.getAllProducts);
 

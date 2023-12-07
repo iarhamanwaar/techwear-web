@@ -29,11 +29,33 @@
     <style>
       body {
         font-family: "Audiowide", sans-serif;
-        background-color: black;
+        background-color: #000;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
       }
 
       .container {
         position: relative;
+      }
+
+      .footer-grid {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .nav-bar {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 20px;
+        max-width: 1400px;
+        width: 100%;
       }
 
       .image-overlay {
@@ -54,6 +76,62 @@
         position: relative;
         overflow: hidden;
         border-radius: 10px;
+      }
+
+      .section {
+        border-right: 1px solid #222222;
+        border-top: 1px solid #222222;
+        padding: 20px;
+      }
+
+      .footer h1 {
+        font-size: 1.4rem;
+        font-weight: bold;
+        padding-top: 7px;
+      }
+
+      .footer p {
+        padding-top: 7px;
+      }
+
+      .button-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2px;
+        padding: 7px;
+      }
+
+      .button {
+        background-color: #2d2d2d;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+        cursor: pointer;
+        border-radius: 9999px;
+      }
+
+      .resources,
+      .company,
+      .policies {
+        padding-bottom: 5px;
+      }
+
+      .links {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+        padding-top: 7px;
+      }
+
+      .link {
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.3s;
+        font-size: 18px;
+      }
+
+      .link:hover {
+        color: #808080;
       }
 
       .image-container:hover img {
@@ -86,44 +164,59 @@
   </head>
 
   <body>
+    <nav class="nav-bar">
+      <div class="col-sm-3 mt-2">
+        <a href="/" style="text-decoration: none; color: aliceblue">
+          <h1
+            style="
+              color: aliceblue;
+              text-shadow: 0 0 10px rgba(255, 255, 255, 1);
+            "
+          >
+            TechWear
+          </h1>
+        </a>
+      </div>
+
+      <div class="col-sm-2 mt-4">
+        <a href="/men" style="text-decoration: none; color: aliceblue">
+          <h4>Men</h4>
+        </a>
+      </div>
+
+      <div class="col-sm-2 mt-4">
+        <a href="/women" style="text-decoration: none; color: aliceblue">
+          <h4>Women</h4>
+        </a>
+      </div>
+
+      <div class="col-sm-2 mt-4">
+        <a href="/jewelry" style="text-decoration: none; color: aliceblue">
+          <h4>Jewelry</h4>
+        </a>
+      </div>
+
+      <div style="color: aliceblue" class="col-sm-1 mt-4">
+        <a href="/profile" style="text-decoration: none; color: aliceblue">
+          <i class="material-icons">person</i>
+        </a>
+      </div>
+
+      <div style="color: aliceblue" class="col-sm-1 mt-4">
+        <a href="/search" style="text-decoration: none; color: aliceblue">
+          <i class="material-icons">search</i>
+        </a>
+      </div>
+
+      <div style="color: aliceblue" class="col-sm-1 mt-4">
+        <a href="/cart" style="text-decoration: none; color: aliceblue">
+          <i class="material-icons">shopping_cart</i>
+        </a>
+      </div>
+    </nav>
     <form id="form1" runat="server">
       <div class="container">
         <div class="row">
-          <div class="col-sm-3 mt-2">
-            <h1
-              style="
-                color: aliceblue;
-                text-shadow: 0 0 10px rgba(255, 255, 255, 1);
-              "
-            >
-              TechWear
-            </h1>
-          </div>
-
-          <div class="col-sm-2 mt-4">
-            <h4 style="color: aliceblue">Men</h4>
-          </div>
-
-          <div class="col-sm-2 mt-4">
-            <h4 style="color: aliceblue">Women</h4>
-          </div>
-
-          <div class="col-sm-2 mt-4">
-            <h4 style="color: aliceblue">Jewelry</h4>
-          </div>
-
-          <div style="color: aliceblue" class="col-sm-1 mt-4">
-            <i class="material-icons">person</i>
-          </div>
-
-          <div style="color: aliceblue" class="col-sm-1 mt-4">
-            <i class="material-icons">search</i>
-          </div>
-
-          <div style="color: aliceblue" class="col-sm-1 mt-4">
-            <i class="material-icons">shopping_cart</i>
-          </div>
-
           <div class="col-sm-12 image-container">
             <img
               src="mhm.jpg"
@@ -547,6 +640,51 @@
             >
               Sign up to get the latest on Sales, New Releases and More...
             </h4>
+          </div>
+
+          <div class="footer-grid">
+            <div class="section" style="border-left: 1px solid #222222">
+              <h1>Techwear UK</h1>
+              <p>
+                Techwear UK is the major Japanese Techwear online shop in the
+                United Kingdom. We commit to offer the most affordable technical
+                clothes with high tech fabrics.
+              </p>
+              <div class="button-container">
+                <div class="button">Twitter</div>
+                <div class="button">Instagram</div>
+                <div class="button">YouTube</div>
+                <div class="button">Facebook</div>
+              </div>
+            </div>
+            <div class="section">
+              <h1>Resources</h1>
+              <div class="links">
+                <a href="/" class="link">Support</a>
+                <a href="/" class="link">Feedback</a>
+                <a href="/" class="link">Sign In</a>
+                <a href="/" class="link">Pricing</a>
+              </div>
+            </div>
+            <div class="section">
+              <h1>Company</h1>
+              <div class="links">
+                <a href="/" class="link">Blog</a>
+                <a href="/" class="link">About</a>
+                <a href="/" class="link">Careers</a>
+                <a href="/" class="link">Partners</a>
+                <a href="/" class="link">Contact Us</a>
+              </div>
+            </div>
+            <div class="section">
+              <h1>Policies</h1>
+              <div class="links">
+                <a href="/" class="link">Terms</a>
+                <a href="/" class="link">Privacy</a>
+                <a href="/" class="link">License</a>
+                <a href="/" class="link">Company Information</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -1,3 +1,5 @@
+const Category = require("../models/category");
+const Image = require("../models/image");
 const Product = require("../models/product");
 
 // Create a new product
@@ -7,6 +9,56 @@ exports.createProduct = async (req, res) => {
     return res.status(201).json(product);
   } catch (error) {
     return res.status(500).json({ error: error.message });
+  }
+};
+
+// create a new product and associated image
+exports.createProductWithImage = async (req, res) => {
+  try {
+    const { categoryId, name, description, price, stock_quantity, imageUrl } =
+      req.body;
+
+    // Create the product
+    const product = await Product.create({
+      categoryId,
+      name,
+      description,
+      price,
+      stock_quantity,
+    });
+
+    // Create the associated image
+    const image = await Image.create({
+      url: imageUrl,
+      productId: product.id,
+    });
+
+    res.status(201).json({ product, image });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// Get products by category id
+exports.getProductByCategory = async (req, res) => {
+  try {
+    const categoryId = req.params.categoryId;
+
+    // Find the category to ensure it exists
+    const category = await Category.findByPk(categoryId);
+    if (!category) {
+      return res.status(404).json({ error: "Category not found" });
+    }
+
+    // Retrieve all products with their associated images based on the category id
+    const products = await Product.findAll({
+      where: { categoryId },
+      include: [{ model: Image }],
+    });
+
+    res.status(200).json(products);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
 };
 
