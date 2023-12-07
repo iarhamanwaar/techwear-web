@@ -7,6 +7,7 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const ejs = require("ejs");
 const { initializeDatabase } = require("./models/index");
 
 const indexRouter = require("./routes/index");
@@ -20,9 +21,8 @@ const categoriesRouter = require("./routes/categories");
 const app = express();
 const port = process.env.PORT || 8080;
 
-// view engine setup
+app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "jade");
 
 app.use(bodyParser.json());
 
