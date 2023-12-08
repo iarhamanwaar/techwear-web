@@ -293,389 +293,136 @@
         </a>
       </div>
     </nav>
-    <form id="form1" runat="server">
-      <div class="container">
-        <div class="row">
-          <div id="slider-container">
-            <div class="slider">
-              <img
-                src="https://cdn.shopify.com/s/files/1/0565/9685/7004/files/off-wrld_2048x2048.jpg?v=1695669336"
-                alt="Slider Image 1"
-              />
-              <img
-                src="https://cdn.shopify.com/s/files/1/0565/9685/7004/files/Capture_d_ecran_2023-09-25_a_21.30.01_2048x2048.png?v=1695670232"
-              />
-              <img
-                src="https://cdn.shopify.com/s/files/1/0565/9685/7004/files/yessir_da8ccb16-ef81-4c19-b5b5-690e3f20efd0_2048x2048.jpg?v=1695666196"
-                alt="Slider Image 3"
-              />
-              <img
-                src="https://cdn.shopify.com/s/files/1/0565/9685/7004/files/YESS1_1_.remini-enhanced_2048x2048.jpg?v=1694896518"
-              />
-              <img
-                src="https://nextluxury.com/wp-content/uploads/Techwear.jpg"
-                alt="Slider Image 3"
-              />
-              <img
-                src="//techwear-uk.com/cdn/shop/products/3_8b56c4f4-fbbf-4f1c-beb7-102c2e396dad_1080x.webp.jpg?v=1690823715 1080w"
-              />
-              <img
-                src="//techwear-uk.com/cdn/shop/products/Man-Wearing-Black-Techwear-Hoodie-Back-View-Techwear-UK_900x.png.jpg?v=1693838989 900w, //techwear-uk.com/cdn/shop/products/Man-Wearing-Black-Techwear-Hoodie-Back-View-Techwear-UK_1080x.png.jpg?v=1693838989 1080w"
-              />
+    <div class="container">
+      <div class="row">
+        <div id="slider-container">
+          <div class="slider">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0565/9685/7004/files/off-wrld_2048x2048.jpg?v=1695669336"
+              alt="Slider Image 1"
+            />
+            <img
+              src="https://cdn.shopify.com/s/files/1/0565/9685/7004/files/Capture_d_ecran_2023-09-25_a_21.30.01_2048x2048.png?v=1695670232"
+            />
+            <img
+              src="https://cdn.shopify.com/s/files/1/0565/9685/7004/files/yessir_da8ccb16-ef81-4c19-b5b5-690e3f20efd0_2048x2048.jpg?v=1695666196"
+              alt="Slider Image 3"
+            />
+            <img
+              src="https://cdn.shopify.com/s/files/1/0565/9685/7004/files/YESS1_1_.remini-enhanced_2048x2048.jpg?v=1694896518"
+            />
+            <img
+              src="https://nextluxury.com/wp-content/uploads/Techwear.jpg"
+              alt="Slider Image 3"
+            />
+            <img
+              src="//techwear-uk.com/cdn/shop/products/3_8b56c4f4-fbbf-4f1c-beb7-102c2e396dad_1080x.webp.jpg?v=1690823715 1080w"
+            />
+            <img
+              src="//techwear-uk.com/cdn/shop/products/Man-Wearing-Black-Techwear-Hoodie-Back-View-Techwear-UK_900x.png.jpg?v=1693838989 900w, //techwear-uk.com/cdn/shop/products/Man-Wearing-Black-Techwear-Hoodie-Back-View-Techwear-UK_1080x.png.jpg?v=1693838989 1080w"
+            />
+          </div>
+        </div>
+
+        <% products.forEach(function(product) { %>
+        <div class="col-sm-3 image-container mt-4">
+          <img
+            src="<%= product.Images[0].url %>"
+            alt="<%= product.name %>"
+            height="300"
+            width="300"
+          />
+          <h5
+            style="
+              text-align: center;
+              margin-top: 10px;
+              color: aliceblue;
+              text-shadow: 0 0 10px rgba(255, 255, 255, 1);
+            "
+          >
+            <u><%= product.name %></u>
+          </h5>
+        </div>
+        <% }); %>
+
+        <div style="background-color: aliceblue" class="col-sm-12 mt-4">
+          <div class="row">
+            <div style="color: black" class="col-sm-4 mt-4 text-center">
+              <i class="material-icons">local_shipping</i>
+              <p>Free Delivery</p>
+            </div>
+
+            <div style="color: black" class="col-sm-4 mt-4 text-center">
+              <i class="material-icons">phone</i>
+              <p>24/7 Support</p>
+            </div>
+
+            <div style="color: black" class="col-sm-4 mt-4 text-center">
+              <i class="material-icons">credit_card</i>
+              <p>Secure Payment</p>
             </div>
           </div>
+        </div>
 
-          <div class="col-sm-3 image-container mt-4">
-            <img
-              src="https://techwear-uk.com/cdn/shop/files/Techwear-UK-Man-Wearing-Black-Xgxf-Jacket-Front-Side-View_750x.jpg?v=1688941083%20750w"
-              height="300"
-              width="300"
-              alt="Another Image"
-            />
-            <h5
-              style="
-                text-align: center;
-                margin-top: 10px;
-                color: aliceblue;
-                text-shadow: 0 0 10px rgba(255, 255, 255, 1);
-              "
-            >
-              <u>XGXF TechWear Jacket</u>
-            </h5>
-          </div>
+        <div class="col-sm-12">
+          <h4
+            style="
+              text-align: center;
+              margin-top: 40px;
+              color: aliceblue;
+              text-shadow: 0 0 10px rgba(255, 255, 255, 1);
+            "
+          >
+            Sign up to get the latest on Sales, New Releases and More...
+          </h4>
+        </div>
 
-          <div class="col-sm-3 image-container mt-4">
-            <img
-              src="//techwear-uk.com/cdn/shop/files/Man-Wearing-Black-Devil-Denim-Jacket-Techwear-UK-Back-Side-View_750x.png.jpg?v=1693294859 750w"
-              height="300"
-              width="300"
-              alt="Another Image"
-            />
-            <h5
-              style="
-                text-align: center;
-                margin-top: 10px;
-                color: aliceblue;
-                text-shadow: 0 0 10px rgba(255, 255, 255, 1);
-              "
-            >
-              <u>Devil Denim Jacket</u>
-            </h5>
-          </div>
-
-          <div class="col-sm-3 image-container mt-4">
-            <img
-              src="//techwear-uk.com/cdn/shop/products/Man-Wearing-Black-Techwear-Goth-Hoodie-Front-Side-View-Techwear-UK_750x.png.jpg?v=1681227154 750w"
-              height="300"
-              width="300"
-              alt="Another Image"
-            />
-            <h5
-              style="
-                text-align: center;
-                margin-top: 10px;
-                color: aliceblue;
-                text-shadow: 0 0 10px rgba(255, 255, 255, 1);
-              "
-            >
-              <u>Techwear Goth Hoodie</u>
-            </h5>
-          </div>
-
-          <div class="col-sm-3 image-container mt-4">
-            <img
-              src="//techwear-uk.com/cdn/shop/files/Black-Japanese-Techwear-Hoodie-Model-Wearing_750x.jpg?v=1698745184 750w"
-              height="300"
-              width="300"
-              alt="Another Image"
-            />
-            <h5
-              style="
-                text-align: center;
-                margin-top: 10px;
-                color: aliceblue;
-                text-shadow: 0 0 10px rgba(255, 255, 255, 1);
-              "
-            >
-              <u>Japnees TechWear</u>
-            </h5>
-          </div>
-
-          <div class="col-sm-3 image-container mt-4">
-            <img
-              src="//techwear-uk.com/cdn/shop/files/Techwear-Uk-Black-Shorts-Streetwear-Man-in-Wearing-Front-Side-View_750x.png.jpg?v=1692718298 750w"
-              height="300"
-              width="300"
-              alt="Another Image"
-            />
-            <h5
-              style="
-                text-align: center;
-                margin-top: 10px;
-                color: aliceblue;
-                text-shadow: 0 0 10px rgba(255, 255, 255, 1);
-              "
-            >
-              <u>Black SteetWear Shorts</u>
-            </h5>
-          </div>
-
-          <div class="col-sm-3 image-container mt-4">
-            <img
-              src="//techwear-uk.com/cdn/shop/files/Techwear-Uk-Cargo-Shorts-With-Zipper-Pockets-Man-Wearing-Front-Side-View_750x.png.jpg?v=1686044810 750w"
-              height="300"
-              width="300"
-              alt="Another Image"
-            />
-            <h5
-              style="
-                text-align: center;
-                margin-top: 10px;
-                color: aliceblue;
-                text-shadow: 0 0 10px rgba(255, 255, 255, 1);
-              "
-            >
-              <u>Cargo Shorts</u>
-            </h5>
-          </div>
-
-          <div class="col-sm-3 image-container mt-4">
-            <img
-              src="//techwear-uk.com/cdn/shop/files/Techwear-Uk-Techwear-Short-Man-in-Wearing-Front-Side-View_750x.png.jpg?v=1686045999 750w"
-              height="300"
-              width="300"
-              alt="Another Image"
-            />
-            <h5
-              style="
-                text-align: center;
-                margin-top: 10px;
-                color: aliceblue;
-                text-shadow: 0 0 10px rgba(255, 255, 255, 1);
-              "
-            >
-              <u>Techwear Shorts</u>
-            </h5>
-          </div>
-
-          <div class="col-sm-3 image-container mt-4">
-            <img
-              src="//techwear-uk.com/cdn/shop/files/Techwear-Uk-Techwear-Double-Layered-Short-Man-in-Wearing-Front-View_750x.png.jpg?v=1686046164 750w"
-              height="300"
-              width="300"
-              alt="Another Image"
-            />
-            <h5
-              style="
-                text-align: center;
-                margin-top: 10px;
-                color: aliceblue;
-                text-shadow: 0 0 10px rgba(255, 255, 255, 1);
-              "
-            >
-              <u>TechWear Layer Shorts</u>
-            </h5>
-          </div>
-
-          <div class="col-sm-3 image-container mt-4">
-            <img
-              src="https://techwear.store/cdn/shop/products/street-goth-pants-_1_6b71ff42-945a-4bd5-ae9e-913f593eb2aa_400x.png"
-              height="300"
-              width="300"
-              alt="Another Image"
-            />
-            <h5
-              style="
-                text-align: center;
-                margin-top: 10px;
-                color: aliceblue;
-                text-shadow: 0 0 10px rgba(255, 255, 255, 1);
-              "
-            >
-              <u>Street Goth Pants</u>
-            </h5>
-          </div>
-
-          <div class="col-sm-3 image-container mt-4">
-            <img
-              src="//techwear-uk.com/cdn/shop/files/Man-wearing-Techwear-UK-Japanese-style-Black-11-Bybb_s-Pants_750x.png.jpg?v=1693359847 750w"
-              height="300"
-              width="300"
-              alt="Another Image"
-            />
-            <h5
-              style="
-                text-align: center;
-                margin-top: 10px;
-                color: aliceblue;
-                text-shadow: 0 0 10px rgba(255, 255, 255, 1);
-              "
-            >
-              <u>11 Byby's Dark Pants</u>
-            </h5>
-          </div>
-
-          <div class="col-sm-3 image-container mt-4">
-            <img
-              src="//techwear-uk.com/cdn/shop/files/Man-wearing-Techwear-UK-Limited-Edition-Black-Techwear-Pants_750x.png.jpg?v=1693928023 750w"
-              height="300"
-              width="300"
-              alt="Another Image"
-            />
-            <h5
-              style="
-                text-align: center;
-                margin-top: 10px;
-                color: aliceblue;
-                text-shadow: 0 0 10px rgba(255, 255, 255, 1);
-              "
-            >
-              <u>Black Techwear Pants</u>
-            </h5>
-          </div>
-
-          <div class="col-sm-3 image-container mt-4">
-            <img
-              src="//techwear-uk.com/cdn/shop/files/Left-Side-Man-in-Wearing-Techwear-UK-Black-Cargo-Pants_750x.jpg?v=1693927026 750w"
-              height="300"
-              width="300"
-              alt="Another Image"
-            />
-            <h5
-              style="
-                text-align: center;
-                margin-top: 10px;
-                color: aliceblue;
-                text-shadow: 0 0 10px rgba(255, 255, 255, 1);
-              "
-            >
-              <u>Techwear Cargo</u>
-            </h5>
-          </div>
-
-          <div class="col-sm-3 image-container mt-4">
-            <img
-              src="//techwear-uk.com/cdn/shop/files/Techwear-Uk-Japanese-Style-Oversized-T-shirt-Man-in-Wearing-Front-View_750x.png.jpg?v=1686207880 750w"
-              height="300"
-              width="300"
-              alt="Another Image"
-            />
-            <h5
-              style="
-                text-align: center;
-                margin-top: 10px;
-                color: aliceblue;
-                text-shadow: 0 0 10px rgba(255, 255, 255, 1);
-              "
-            >
-              <u>OverSize T-Shirt</u>
-            </h5>
-          </div>
-
-          <div class="col-sm-3 image-container mt-4">
-            <img
-              src="//techwear-uk.com/cdn/shop/files/Techwear-Uk-Tactical-Combat-T-Shirt-Man-in-Wearing-Front-View_750x.png.jpg?v=1686217400 750w"
-              height="300"
-              width="300"
-              alt="Another Image"
-            />
-            <h5
-              style="
-                text-align: center;
-                margin-top: 10px;
-                color: aliceblue;
-                text-shadow: 0 0 10px rgba(255, 255, 255, 1);
-              "
-            >
-              <u>Tactical Combat</u>
-            </h5>
-          </div>
-
-          <div class="col-sm-3 image-container mt-4">
-            <img
-              src="//techwear-uk.com/cdn/shop/files/Techwear-Uk-Ninja-Disguise-T-Shirt-Man-in-Wearing-Front-View_750x.png.jpg?v=1686217535 750w,"
-              height="300"
-              width="300"
-              alt="Another Image"
-            />
-            <h5
-              style="
-                text-align: center;
-                margin-top: 10px;
-                color: aliceblue;
-                text-shadow: 0 0 10px rgba(255, 255, 255, 1);
-              "
-            >
-              <u>Ninja T-Shirt</u>
-            </h5>
-          </div>
-
-          <div class="col-sm-3 image-container mt-4">
-            <img
-              src="//techwear-uk.com/cdn/shop/files/Techwear-Uk-Techwear-T-Shirt-Man-in-Wearing-Front-View_750x.png.jpg?v=1686206153 750w"
-              height="300"
-              width="300"
-              alt="Another Image"
-            />
-            <h5
-              style="
-                text-align: center;
-                margin-top: 10px;
-                color: aliceblue;
-                text-shadow: 0 0 10px rgba(255, 255, 255, 1);
-              "
-            >
-              <u>TechWear T-Shirt</u>
-            </h5>
-          </div>
-
-          <div class="footer-grid">
-            <div class="section" style="border-left: 1px solid #222222">
-              <h1>Techwear UK</h1>
-              <p>
-                Techwear UK is the major Japanese Techwear online shop in the
-                United Kingdom. We commit to offer the most affordable technical
-                clothes with high tech fabrics.
-              </p>
-              <div class="button-container">
-                <div class="button">Twitter</div>
-                <div class="button">Instagram</div>
-                <div class="button">YouTube</div>
-                <div class="button">Facebook</div>
-              </div>
+        <div class="footer-grid">
+          <div class="section" style="border-left: 1px solid #222222">
+            <h1>Techwear UK</h1>
+            <p>
+              Techwear UK is the major Japanese Techwear online shop in the
+              United Kingdom. We commit to offer the most affordable technical
+              clothes with high tech fabrics.
+            </p>
+            <div class="button-container">
+              <div class="button">Twitter</div>
+              <div class="button">Instagram</div>
+              <div class="button">YouTube</div>
+              <div class="button">Facebook</div>
             </div>
-            <div class="section">
-              <h1>Resources</h1>
-              <div class="links">
-                <a href="/" class="link">Support</a>
-                <a href="/" class="link">Feedback</a>
-                <a href="/" class="link">Sign In</a>
-                <a href="/" class="link">Pricing</a>
-              </div>
+          </div>
+          <div class="section">
+            <h1>Resources</h1>
+            <div class="links">
+              <a href="/" class="link">Support</a>
+              <a href="/" class="link">Feedback</a>
+              <a href="/" class="link">Sign In</a>
+              <a href="/" class="link">Pricing</a>
             </div>
-            <div class="section">
-              <h1>Company</h1>
-              <div class="links">
-                <a href="/" class="link">Blog</a>
-                <a href="/" class="link">About</a>
-                <a href="/" class="link">Careers</a>
-                <a href="/" class="link">Partners</a>
-                <a href="/" class="link">Contact Us</a>
-              </div>
+          </div>
+          <div class="section">
+            <h1>Company</h1>
+            <div class="links">
+              <a href="/" class="link">Blog</a>
+              <a href="/" class="link">About</a>
+              <a href="/" class="link">Careers</a>
+              <a href="/" class="link">Partners</a>
+              <a href="/contact" class="link">Contact Us</a>
             </div>
-            <div class="section">
-              <h1>Policies</h1>
-              <div class="links">
-                <a href="/" class="link">Terms</a>
-                <a href="/" class="link">Privacy</a>
-                <a href="/" class="link">License</a>
-                <a href="/" class="link">Company Information</a>
-              </div>
+          </div>
+          <div class="section">
+            <h1>Policies</h1>
+            <div class="links">
+              <a href="/" class="link">Terms</a>
+              <a href="/" class="link">Privacy</a>
+              <a href="/" class="link">License</a>
+              <a href="/" class="link">Company Information</a>
             </div>
           </div>
         </div>
       </div>
-    </form>
+    </div>
     <script>
       window.onload = function () {
         const slider = document.querySelector(".slider");
