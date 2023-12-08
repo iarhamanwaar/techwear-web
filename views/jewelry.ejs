@@ -54,6 +54,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      position: relative;
     }
 
     .grid {
@@ -161,6 +162,38 @@
     .link:hover {
       color: #808080;
     }
+
+        .image-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: aliceblue;
+        }
+
+        .image-overlay h1 {
+            font-size: 36px;
+            margin: 0;
+        }
+
+        .image-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .image-container:hover img {
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .image-container img {
+            width: 100%;
+            display: block;
+            border: 5px solid transparent;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1);
+            transition: border-color 0.5s ease;
+        }
   </style>
 </head>
 
