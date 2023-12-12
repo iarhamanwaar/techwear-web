@@ -29,24 +29,11 @@
     <style>
       body {
         font-family: "Audiowide", sans-serif;
-        background-color: #000;
-        color: #fff;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
+        background-color: black;
       }
 
       .container {
         position: relative;
-      }
-
-      .footer-grid {
-        margin-top: 20px;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
       }
 
       .nav-bar {
@@ -78,16 +65,37 @@
         border-radius: 10px;
       }
 
-      .section {
-        border-right: 1px solid #222222;
-        border-top: 1px solid #222222;
-        padding: 20px;
+      .image-container:hover img {
+        border-color: rgba(255, 255, 255, 0.5);
+      }
+
+      .image-container img {
+        width: 100%;
+        display: block;
+        border: 5px solid transparent;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 1),
+          0 0 20px rgba(255, 255, 255, 1);
+        transition: border-color 0.5s ease;
+      }
+
+      .video-container {
+        text-align: center;
+        margin-top: 100px;
+      }
+
+      iframe {
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
       }
 
       .footer h1 {
-        font-size: 1.4rem;
-        font-weight: bold;
         padding-top: 7px;
+        color: aliceblue;
       }
 
       .footer p {
@@ -132,33 +140,6 @@
 
       .link:hover {
         color: #808080;
-      }
-
-      .image-container:hover img {
-        border-color: rgba(255, 255, 255, 0.5);
-        /* Change border color on hover */
-      }
-
-      .image-container img {
-        width: 100%;
-        display: block;
-        border: 5px solid transparent;
-        /* Set a transparent border initially */
-        box-shadow: 0 0 10px rgba(255, 255, 255, 1),
-          0 0 20px rgba(255, 255, 255, 1);
-        /* White glowing border */
-        transition: border-color 0.5s ease;
-        /* Smooth transition for the border color */
-      }
-
-      .video-container {
-        text-align: center;
-        margin-top: 100px;
-      }
-
-      iframe {
-        display: inline-block;
-        vertical-align: middle;
       }
     </style>
   </head>
@@ -219,43 +200,45 @@
         <div class="row">
           <div class="col-sm-12 image-container">
             <img
-              src="/images/mhm.jpg"
-              height="auto"
-              width="auto"
+              src="https://wallpapercave.com/wp/wp6781415.jpg"
+              height="90%"
+              width="100%"
               alt="Cyber Punk Collection"
             />
             <div class="image-overlay">
-              <h1 class="font-effect-neon">W O M E N' S</h1>
-              <h1 class="font-effect-neon">C O L L E C T I O N</h1>
+              <h1
+                style="
+                  color: aliceblue;
+                  text-shadow: 0 0 10px rgba(255, 255, 255, 1);
+                "
+              >
+                P A S T
+              </h1>
+              <h1
+                style="
+                  color: aliceblue;
+                  text-shadow: 0 0 10px rgba(255, 255, 255, 1);
+                "
+              >
+                O R D E R S
+              </h1>
             </div>
           </div>
 
-          <% products.forEach(function(product) { %>
-          <div class="col-sm-3 image-container mt-4">
-            <img
-              src="<%= product.Images[0].url %>"
-              alt="<%= product.name %>"
-              height="300"
-              width="300"
-            />
-            <h5
-              style="
-                text-align: center;
-                margin-top: 10px;
-                color: aliceblue;
-                text-shadow: 0 0 10px rgba(255, 255, 255, 1);
-              "
-            >
-              <u><%= product.name %></u>
-            </h5>
-            <button
-              class="add-to-cart-button"
-              onclick="addToCart('<%= product.id %>')"
-            >
-              Add to Cart
-            </button>
-          </div>
-          <% }); %>
+          <ul class="list-group">
+            <li style="background-color: aliceblue" class="list-group-item">
+              Cras justo odio
+            </li>
+            <li style="background-color: aliceblue" class="list-group-item">
+              Cras justo odio
+            </li>
+            <li style="background-color: aliceblue" class="list-group-item">
+              Cras justo odio
+            </li>
+            <li style="background-color: aliceblue" class="list-group-item">
+              Cras justo odio
+            </li>
+          </ul>
 
           <div style="background-color: aliceblue" class="col-sm-12 mt-4">
             <div class="row">
@@ -291,10 +274,10 @@
 
           <div class="footer-grid">
             <div class="section" style="border-left: 1px solid #222222">
-              <h1>Techwear UK</h1>
-              <p>
-                Techwear UK is the major Japanese Techwear online shop in the
-                United Kingdom. We commit to offer the most affordable technical
+              <h1 style="color: aliceblue">Techwear</h1>
+              <p style="color: aliceblue">
+                Techwear UK is the major Japanese Techwear online shop in
+                Pakistan. We commit to offer the most affordable technical
                 clothes with high tech fabrics.
               </p>
               <div class="button-container">
@@ -305,7 +288,7 @@
               </div>
             </div>
             <div class="section">
-              <h1>Resources</h1>
+              <h1 style="color: aliceblue">Resources</h1>
               <div class="links">
                 <a href="/" class="link">Support</a>
                 <a href="/" class="link">Feedback</a>
@@ -314,17 +297,17 @@
               </div>
             </div>
             <div class="section">
-              <h1>Company</h1>
+              <h1 style="color: aliceblue">Company</h1>
               <div class="links">
                 <a href="/" class="link">Blog</a>
                 <a href="/" class="link">About</a>
                 <a href="/" class="link">Careers</a>
                 <a href="/" class="link">Partners</a>
-                <a href="/contact" class="link">Contact Us</a>
+                <a href="/" class="link">Contact Us</a>
               </div>
             </div>
             <div class="section">
-              <h1>Policies</h1>
+              <h1 style="color: aliceblue">Policies</h1>
               <div class="links">
                 <a href="/" class="link">Terms</a>
                 <a href="/" class="link">Privacy</a>
@@ -336,32 +319,5 @@
         </div>
       </div>
     </form>
-    <script>
-      function addToCart(productId) {
-        // Create an object with the product details
-        const productDetails = {
-          email: "arhamanwaar+5@gmail.com",
-          type: "add",
-          productId: productId,
-        };
-
-        // Make a POST request to your server
-        fetch("/api/cart", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(productDetails),
-        })
-          .then((response) => response)
-          .then((data) => {
-            // Handle the response, if needed
-            console.log("Product added to cart:", data);
-          })
-          .catch((error) => {
-            console.error("Error:", error);
-          });
-      }
-    </script>
   </body>
 </html>

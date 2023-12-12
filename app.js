@@ -17,6 +17,8 @@ const productsRouter = require("./routes/products");
 const ordersRouter = require("./routes/orders");
 const imagesRouter = require("./routes/images");
 const categoriesRouter = require("./routes/categories");
+const cartRouter = require("./routes/carts");
+const session = require("express-session");
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -25,6 +27,15 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
 app.use(bodyParser.json());
+
+app.use(
+  session({
+    secret: "secret-key",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false },
+  })
+);
 
 app.use(
   cors({
@@ -48,6 +59,7 @@ app.use("/api/products", productsRouter);
 app.use("/api/orders", ordersRouter);
 app.use("/api/images", imagesRouter);
 app.use("/api/categories", categoriesRouter);
+app.use("/api/cart", cartRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

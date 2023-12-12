@@ -2,16 +2,67 @@ const express = require("express");
 const Product = require("../models/product");
 const Category = require("../models/category");
 const Image = require("../models/image");
+const User = require("../models/user");
+const Cart = require("../models/cart");
+const { getCartById } = require("../controllers/carts");
+const CartItem = require("../models/cartitem");
+
 const router = express.Router();
 
 /* GET home page. */
-router.get("/", (req, res) => {
+router.get("/", async (req, res) => {
+  const user = await User.findOne({
+    where: { email: "arhamanwaar+5@gmail.com" },
+  });
+
+  const cart = await Cart.findByPk(user.cartId, {
+    include: [
+      {
+        model: CartItem,
+        include: [
+          {
+            model: Product,
+          },
+        ],
+      },
+    ],
+  }).then(function (cart) {
+    if (!cart || (cart.CartItems && cart.CartItems.length === 0)) {
+      return {
+        data: {
+          id: cartId,
+          total: 0,
+          CartItems: [],
+        },
+      };
+    }
+
+    cart = cart.toJSON();
+
+    var total = 0;
+
+    cart.CartItems.forEach(function (cartItem) {
+      cartItem.name = cartItem.Product.name;
+      cartItem.description = cartItem.Product.description;
+      cartItem.price = parseFloat(
+        (cartItem.quantity * cartItem.Product.price).toFixed(3)
+      );
+
+      delete cartItem.Product;
+      total += cartItem.price;
+    });
+
+    cart.total = total;
+
+    return cart;
+  });
+
+  if (!cart) {
+    return res.status(404).json({ error: "Cart not found" });
+  }
+
   const data = {
-    imageUrl: "https://wallpapercave.com/wp/wp12113051.jpg",
-    title1: "CYBER DARK",
-    title2: "COLLECTION",
-    title3: "FW//",
-    title4: "2324",
+    cart,
   };
 
   res.render("../views/index", data);
@@ -134,9 +185,66 @@ router.get("/jewelry", async (req, res) => {
   res.render("../views/jewelry", data);
 });
 
-/* GET home page. */
+/* GET contact page. */
 router.get("/contact", (req, res) => {
   res.render("../views/contact");
+});
+
+/* GET home page. */
+router.get("/profile", (req, res) => {
+  if (req.session.user) {
+    res.render("../views/profile");
+  } else {
+    res.redirect("/signup");
+  }
+});
+
+router.get("/login", (req, res) => {
+  res.render("../views/login");
+});
+
+router.get("/signup", (req, res) => {
+  res.render("../views/signup");
+});
+
+router.post("/signup", async (req, res) => {
+  const { email } = req.body;
+
+  const existingUser = await User.findOne({ where: { email } });
+
+  if (existingUser) {
+    res.status(401).send("User account already exists, please login instead.");
+  }
+
+  const cart = await Cart.create();
+  await User.create({
+    ...req.body,
+    cartId: cart.id,
+  });
+
+  req.session.user = { email: email };
+
+  res.status(200).send("User account created successfully.");
+});
+
+router.post("/login", async (req, res) => {
+  const { email, password } = req.body;
+
+  let user = await User.findOne({
+    where: { email },
+  });
+
+  if (!user) {
+    return res.status(401).send("Invalid credentials");
+  }
+
+  if (user.password != password) {
+    return res.status(401).send("Invalid credentials");
+  }
+
+  req.session.user = { email: email };
+
+  res.status(200).send("User account fetched successfully.");
 });
 
 module.exports = router;

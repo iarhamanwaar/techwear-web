@@ -4,13 +4,12 @@ const Product = require("./product");
 const Review = require("./review");
 const Image = require("./image");
 const Category = require("./category");
+const Cart = require("./cart");
 const sequelize = require(".");
 
 const User = sequelize.define("User", {
-  username: {
+  name: {
     type: DataTypes.STRING,
-    unique: true,
-    allowNull: false,
   },
   email: {
     type: DataTypes.STRING,
@@ -21,18 +20,21 @@ const User = sequelize.define("User", {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  first_name: {
-    type: DataTypes.STRING,
-  },
-  last_name: {
-    type: DataTypes.STRING,
-  },
   phone_number: {
     type: DataTypes.STRING,
+  },
+  cartId: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: "Carts",
+      key: "id",
+    },
   },
 });
 
 module.exports = User;
+
+User.belongsTo(Cart, { foreignKey: "cartId" });
 
 User.hasMany(Order, { foreignKey: "userId" });
 Order.belongsTo(User, { foreignKey: "userId" });

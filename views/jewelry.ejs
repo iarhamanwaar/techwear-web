@@ -243,6 +243,12 @@
           <img src="<%= product.Images[0].url %>" alt="<%= product.name %>" />
           <span class="product-name"><%= product.name %></span>
           <span>€ <%= product.price %></span>
+          <button
+            class="add-to-cart-button"
+            onclick="addToCart('<%= product.id %>')"
+          >
+            Add to Cart
+          </button>
         </div>
         <% }); %>
       </div>
@@ -394,5 +400,32 @@
         </div>
       </div>
     </div>
+    <script>
+      function addToCart(productId) {
+        // Create an object with the product details
+        const productDetails = {
+          email: "arhamanwaar+5@gmail.com",
+          type: "add",
+          productId: productId,
+        };
+
+        // Make a POST request to your server
+        fetch("/api/cart", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(productDetails),
+        })
+          .then((response) => response)
+          .then((data) => {
+            // Handle the response, if needed
+            console.log("Product added to cart:", data);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      }
+    </script>
   </body>
 </html>
