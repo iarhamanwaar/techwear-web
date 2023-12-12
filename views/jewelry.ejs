@@ -72,6 +72,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        position: relative;
       }
 
       .grid {
@@ -179,12 +180,46 @@
       .link:hover {
         color: #808080;
       }
+
+      .image-overlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: aliceblue;
+      }
+
+      .image-overlay h1 {
+        font-size: 36px;
+        margin: 0;
+      }
+
+      .image-container {
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+      }
+
+      .image-container:hover img {
+        border-color: rgba(255, 255, 255, 0.5);
+      }
+
+      .image-container img {
+        width: 100%;
+        display: block;
+        border: 5px solid transparent;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 1),
+          0 0 20px rgba(255, 255, 255, 1);
+        transition: border-color 0.5s ease;
+      }
     </style>
   </head>
+
   <body>
-    <nav class="nav-bar">
-      <div class="col-sm-3 mt-2">
-        <a href="/" style="text-decoration: none; color: aliceblue">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3 mt-2">
           <h1
             style="
               color: aliceblue;
@@ -193,209 +228,220 @@
           >
             TechWear
           </h1>
-        </a>
-      </div>
+        </div>
 
-      <div class="col-sm-2 mt-4">
-        <a href="/men" style="text-decoration: none; color: aliceblue">
-          <h4>Men</h4>
-        </a>
-      </div>
+        <div class="col-sm-2 mt-4">
+          <h4 style="color: aliceblue">Men</h4>
+        </div>
 
-      <div class="col-sm-2 mt-4">
-        <a href="/women" style="text-decoration: none; color: aliceblue">
-          <h4>Women</h4>
-        </a>
-      </div>
+        <div class="col-sm-2 mt-4">
+          <h4 style="color: aliceblue">Women</h4>
+        </div>
 
-      <div class="col-sm-2 mt-4">
-        <a href="/jewelry" style="text-decoration: none; color: aliceblue">
-          <h4>Jewelry</h4>
-        </a>
-      </div>
+        <div class="col-sm-2 mt-4">
+          <h4 style="color: aliceblue">Jewelry</h4>
+        </div>
 
-      <div style="color: aliceblue" class="col-sm-1 mt-4">
-        <a href="/profile" style="text-decoration: none; color: aliceblue">
+        <div style="color: aliceblue" class="col-sm-1 mt-4">
           <i class="material-icons">person</i>
-        </a>
-      </div>
+        </div>
 
-      <div style="color: aliceblue" class="col-sm-1 mt-4">
-        <a href="/search" style="text-decoration: none; color: aliceblue">
+        <div style="color: aliceblue" class="col-sm-1 mt-4">
           <i class="material-icons">search</i>
-        </a>
-      </div>
+        </div>
 
-      <div style="color: aliceblue" class="col-sm-1 mt-4">
-        <a href="/cart" style="text-decoration: none; color: aliceblue">
+        <div style="color: aliceblue" class="col-sm-1 mt-4">
           <i class="material-icons">shopping_cart</i>
-        </a>
-      </div>
-    </nav>
-    <div class="container">
-      <h1 style="text-align: center; padding-top: 30px; padding-bottom: 30px">
-        JEWELRY
-      </h1>
+        </div>
 
-      <div class="grid" id="productGrid">
-        <% products.forEach(function(product) { %>
-        <div class="info-container">
-          <img src="<%= product.Images[0].url %>" alt="<%= product.name %>" />
-          <span class="product-name"><%= product.name %></span>
-          <span>€ <%= product.price %></span>
-          <button
-            class="add-to-cart-button"
-            onclick="addToCart('<%= product.id %>')"
+        <div class="col-sm-6 image-container">
+          <img
+            src="https://wallpapercave.com/wp/wp11960301.jpg"
+            height="auto"
+            width="auto"
+            alt="Cyber Punk Collection"
+          />
+          <div
+            class="image-overlay"
+            style="
+              color: aliceblue;
+              text-shadow: 0 0 10px rgba(255, 255, 255, 1);
+            "
           >
-            Add to Cart
-          </button>
+            <h1>Midnight Blue</h1>
+            <h1>Collection</h1>
+          </div>
         </div>
-        <% }); %>
-      </div>
 
-      <p style="padding: 50px">
-        The future had arrived, and with it came the Techwear Jewelry
-        Collection. Each jewelry comes with the most advanced features that are
-        beyond imagination. The jewelry is the most feared jewelry in the world.
-        Each one is adorned with a gruesome design, marking whoever wears it as
-        dangerous and ruthless fighters.
-      </p>
-
-      <h1 style="padding-top: 50px; padding-bottom: 50px">
-        POPULAR COLLECTIONS
-      </h1>
-      <div class="grid" style="margin-bottom: 50px">
-        <div class="popular">
+        <div class="col-sm-6 image-container">
           <img
-            src="/images/hoodie.png"
-            alt=""
-            style="
-              object-fit: cover;
-              position: absolute;
-              opacity: 0.4;
-              z-index: -1;
-              border-radius: 12px;
-            "
+            src="https://i.pinimg.com/736x/f5/97/05/f59705d62dc48069e654ab75be767880.jpg"
+            height="auto"
+            width="auto"
+            alt="Cyber Punk Collection"
           />
-          <h1>TECHWEAR HOODIES</h1>
         </div>
-        <div class="popular">
-          <img
-            src="/images/noragi.webp"
-            alt=""
+
+        <div class="grid" id="productGrid">
+          <% products.forEach(function(product) {
+          <div class="info-container">
+            <img src="<%= product.Images[0].url %>" alt="<%= product.name %>" />
+            <span class="product-name"><%= product.name %></span>
+            <span>€ <%= product.price %></span>
+            <button
+              class="add-to-cart-button"
+              onclick="addToCart('<%= product.id %>')"
+            >
+              Add to Cart
+            </button>
+          </div>
+          <% });
+        </div>
+
+        <p style="padding: 50px">
+          The future had arrived, and with it came the Techwear Jewelry
+          Collection. Each jewelry comes with the most advanced features that
+          are beyond imagination. The jewelry is the most feared jewelry in the
+          world. Each one is adorned with a gruesome design, marking whoever
+          wears it as dangerous and ruthless fighters.
+        </p>
+
+        <h1 style="padding-top: 50px; padding-bottom: 50px">
+          POPULAR COLLECTIONS
+        </h1>
+        <div class="grid" style="margin-bottom: 50px">
+          <div class="popular">
+            <img
+              src="/images/hoodie.png"
+              alt=""
+              style="
+                object-fit: cover;
+                position: absolute;
+                opacity: 0.4;
+                z-index: -1;
+                border-radius: 12px;
+              "
+            />
+            <h1>TECHWEAR HOODIES</h1>
+          </div>
+          <div class="popular">
+            <img
+              src="/images/noragi.webp"
+              alt=""
+              style="
+                object-fit: cover;
+                position: absolute;
+                opacity: 0.4;
+                z-index: -1;
+                border-radius: 12px;
+              "
+            />
+            <h1>TECHWEAR KEMONO</h1>
+          </div>
+          <div class="popular">
+            <img
+              src="/images/slim.webp"
+              alt=""
+              style="
+                object-fit: cover;
+                position: absolute;
+                opacity: 0.4;
+                z-index: -1;
+                border-radius: 12px;
+              "
+            />
+            <h1>TECHWEAR PANTS</h1>
+          </div>
+          <div class="popular">
+            <img
+              src="/images/cargo.webp"
+              alt=""
+              style="
+                object-fit: cover;
+                position: absolute;
+                opacity: 0.4;
+                z-index: -1;
+                border-radius: 12px;
+              "
+            />
+            <h1>TECHWEAR CARGOS</h1>
+          </div>
+        </div>
+
+        <div style="background-color: aliceblue" class="col-sm-12 mt-4">
+          <div class="row">
+            <div style="color: black" class="col-sm-4 mt-4 text-center">
+              <i class="material-icons">local_shipping</i>
+              <p>Free Delivery</p>
+            </div>
+
+            <div style="color: black" class="col-sm-4 mt-4 text-center">
+              <i class="material-icons">phone</i>
+              <p>24/7 Support</p>
+            </div>
+
+            <div style="color: black" class="col-sm-4 mt-4 text-center">
+              <i class="material-icons">credit_card</i>
+              <p>Secure Payment</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12">
+          <h4
             style="
-              object-fit: cover;
-              position: absolute;
-              opacity: 0.4;
-              z-index: -1;
-              border-radius: 12px;
+              text-align: center;
+              margin-top: 40px;
+              color: aliceblue;
+              text-shadow: 0 0 10px rgba(255, 255, 255, 1);
             "
-          />
-          <h1>TECHWEAR KEMONO</h1>
+          >
+            Sign up to get the latest on Sales, New Releases and More...
+          </h4>
         </div>
-        <div class="popular">
-          <img
-            src="/images/slim.webp"
-            alt=""
-            style="
-              object-fit: cover;
-              position: absolute;
-              opacity: 0.4;
-              z-index: -1;
-              border-radius: 12px;
-            "
-          />
-          <h1>TECHWEAR PANTS</h1>
-        </div>
-        <div class="popular">
-          <img
-            src="/images/cargo.webp"
-            alt=""
-            style="
-              object-fit: cover;
-              position: absolute;
-              opacity: 0.4;
-              z-index: -1;
-              border-radius: 12px;
-            "
-          />
-          <h1>TECHWEAR CARGOS</h1>
-        </div>
-      </div>
 
-      <div style="background-color: aliceblue" class="col-sm-12 mt-4">
-        <div class="row">
-          <div style="color: black" class="col-sm-4 mt-4 text-center">
-            <i class="material-icons">local_shipping</i>
-            <p>Free Delivery</p>
+        <div class="footer-grid">
+          <div class="section" style="border-left: 1px solid #222222">
+            <h1>Techwear UK</h1>
+            <p>
+              Techwear UK is the major Japanese Techwear online shop in the
+              United Kingdom. We commit to offer the most affordable technical
+              clothes with high tech fabrics.
+            </p>
+            <div class="button-container">
+              <div class="button">Twitter</div>
+              <div class="button">Instagram</div>
+              <div class="button">YouTube</div>
+              <div class="button">Facebook</div>
+            </div>
           </div>
-
-          <div style="color: black" class="col-sm-4 mt-4 text-center">
-            <i class="material-icons">phone</i>
-            <p>24/7 Support</p>
+          <div class="section">
+            <h1>Resources</h1>
+            <div class="links">
+              <a href="/" class="link">Support</a>
+              <a href="/" class="link">Feedback</a>
+              <a href="/" class="link">Sign In</a>
+              <a href="/" class="link">Pricing</a>
+            </div>
           </div>
-
-          <div style="color: black" class="col-sm-4 mt-4 text-center">
-            <i class="material-icons">credit_card</i>
-            <p>Secure Payment</p>
+          <div class="section">
+            <h1>Company</h1>
+            <div class="links">
+              <a href="/" class="link">Blog</a>
+              <a href="/" class="link">About</a>
+              <a href="/" class="link">Careers</a>
+              <a href="/" class="link">Partners</a>
+              <a href="/contact" class="link">Contact Us</a>
+            </div>
           </div>
-        </div>
-      </div>
-
-      <div class="col-sm-12">
-        <h4
-          style="
-            text-align: center;
-            margin-top: 40px;
-            color: aliceblue;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 1);
-          "
-        >
-          Sign up to get the latest on Sales, New Releases and More...
-        </h4>
-      </div>
-
-      <div class="footer-grid">
-        <div class="section" style="border-left: 1px solid #222222">
-          <h1>Techwear UK</h1>
-          <p>
-            Techwear UK is the major Japanese Techwear online shop in the United
-            Kingdom. We commit to offer the most affordable technical clothes
-            with high tech fabrics.
-          </p>
-          <div class="button-container">
-            <div class="button">Twitter</div>
-            <div class="button">Instagram</div>
-            <div class="button">YouTube</div>
-            <div class="button">Facebook</div>
-          </div>
-        </div>
-        <div class="section">
-          <h1>Resources</h1>
-          <div class="links">
-            <a href="/" class="link">Support</a>
-            <a href="/" class="link">Feedback</a>
-            <a href="/" class="link">Sign In</a>
-            <a href="/" class="link">Pricing</a>
-          </div>
-        </div>
-        <div class="section">
-          <h1>Company</h1>
-          <div class="links">
-            <a href="/" class="link">Blog</a>
-            <a href="/" class="link">About</a>
-            <a href="/" class="link">Careers</a>
-            <a href="/" class="link">Partners</a>
-            <a href="/contact" class="link">Contact Us</a>
-          </div>
-        </div>
-        <div class="section">
-          <h1>Policies</h1>
-          <div class="links">
-            <a href="/" class="link">Terms</a>
-            <a href="/" class="link">Privacy</a>
-            <a href="/" class="link">License</a>
-            <a href="/" class="link">Company Information</a>
+          <div class="section">
+            <h1>Policies</h1>
+            <div class="links">
+              <a href="/" class="link">Terms</a>
+              <a href="/" class="link">Privacy</a>
+              <a href="/" class="link">License</a>
+              <a href="/" class="link">Company Information</a>
+            </div>
           </div>
         </div>
       </div>
